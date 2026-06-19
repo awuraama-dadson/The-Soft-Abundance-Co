@@ -15,7 +15,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style type="text/css">@import url("https://assets.mlcdn.com/fonts.css?version=1781092");</style>
+
+  <!-- MailerLite Universal — loaded ONCE, globally, in <head> -->
+  <script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '2419897');
+  </script>
+  <!-- End MailerLite Universal -->
+
   <style>
     :root {
       --white:#FEFEFE;--cream:#FAF7F4;--blush:#F2DDD6;--blush-deep:#E8C4B8;
@@ -180,54 +190,6 @@
     .mt-8{margin-top:8px;}.mt-16{margin-top:16px;}.mt-24{margin-top:24px;}.mt-32{margin-top:32px;}
     .mb-8{margin-bottom:8px;}.mb-16{margin-bottom:16px;}.mb-32{margin-bottom:32px;}
 
-    /* =====================================================
-       MAILERLITE MODAL
-    ===================================================== */
-    .ml-modal-overlay{
-      display:none;position:fixed;inset:0;z-index:9999;
-      background:rgba(58,50,48,0.65);backdrop-filter:blur(6px);
-      align-items:center;justify-content:center;padding:24px;
-    }
-    .ml-modal-overlay.open{display:flex;}
-    @keyframes overlayIn{from{opacity:0;}to{opacity:1;}}
-    @keyframes modalUp{from{opacity:0;transform:translateY(32px) scale(0.97);}to{opacity:1;transform:translateY(0) scale(1);}}
-    .ml-modal-overlay.open{animation:overlayIn 0.25s ease;}
-    .ml-modal{
-      background:var(--white);border-radius:var(--radius-lg);
-      max-width:480px;width:100%;position:relative;overflow:hidden;
-      box-shadow:0 24px 80px rgba(58,50,48,0.22);
-      animation:modalUp 0.3s cubic-bezier(0.34,1.56,0.64,1) forwards;
-    }
-    .ml-modal__strip{height:6px;background:linear-gradient(90deg,var(--blush) 0%,var(--rose) 50%,var(--blush-deep) 100%);}
-    .ml-modal__close{
-      position:absolute;top:18px;right:20px;width:32px;height:32px;
-      background:var(--cream);border:none;border-radius:50%;cursor:pointer;
-      display:flex;align-items:center;justify-content:center;
-      font-size:0.85rem;color:var(--taupe);transition:var(--transition);z-index:10;
-    }
-    .ml-modal__close:hover{background:var(--blush);color:var(--charcoal);}
-    .ml-modal__header{padding:36px 36px 0;text-align:center;}
-    .ml-modal__icon{font-size:2.2rem;margin-bottom:14px;display:block;}
-    .ml-modal__header h3{font-family:var(--font-display);font-size:1.75rem;color:var(--charcoal);margin-bottom:10px;line-height:1.2;}
-    .ml-modal__header p{font-size:0.9rem;color:var(--text-soft);line-height:1.7;margin:0 auto;max-width:34ch;}
-    .ml-modal__body{padding:24px 36px 36px;}
-    .ml-modal__privacy{text-align:center;font-size:0.7rem;color:var(--warm-grey);margin-top:14px;display:block;}
-
-    /* MailerLite embed overrides — matches brand */
-    .ml-modal__body #mlb2-42447653.ml-form-embedContainer{display:block;}
-    .ml-modal__body .ml-form-embedWrapper{background-color:transparent !important;border:none !important;border-radius:0 !important;width:100% !important;max-width:100% !important;}
-    .ml-modal__body .ml-form-embedBody{padding:0 !important;}
-    .ml-modal__body .ml-form-embedContent{display:none !important;}
-    .ml-modal__body .ml-form-fieldRow input[type="email"]{background-color:var(--cream) !important;color:var(--charcoal) !important;border-color:var(--blush-deep) !important;border-radius:50px !important;border-width:1.5px !important;font-family:var(--font-body) !important;font-size:0.9rem !important;padding:14px 22px !important;width:100% !important;}
-    .ml-modal__body .ml-form-fieldRow input[type="email"]:focus{border-color:var(--rose) !important;box-shadow:0 0 0 3px rgba(201,135,122,0.15) !important;outline:none;}
-    .ml-modal__body .ml-form-fieldRow input[type="email"]::placeholder{color:var(--warm-grey) !important;}
-    .ml-modal__body .ml-form-embedSubmit{margin-top:12px !important;}
-    .ml-modal__body .ml-form-embedSubmit button{background-color:var(--rose) !important;border:none !important;border-radius:50px !important;color:var(--white) !important;font-family:var(--font-body) !important;font-size:0.85rem !important;font-weight:500 !important;letter-spacing:0.1em !important;text-transform:uppercase !important;padding:14px 22px !important;width:100% !important;cursor:pointer !important;}
-    .ml-modal__body .ml-form-embedSubmit button:hover:not([disabled]){background-color:var(--rose-dark) !important;}
-    .ml-modal__body .ml-form-successBody{text-align:center;padding:16px 0 !important;}
-    .ml-modal__body .ml-form-successContent h4{font-family:var(--font-display) !important;font-size:1.5rem !important;color:var(--charcoal) !important;margin-bottom:8px;}
-    .ml-modal__body .ml-form-successContent p{font-size:0.9rem;color:var(--text-soft) !important;}
-
     /* FOOTER */
     .footer{background:var(--charcoal);color:rgba(250,247,244,0.6);padding:72px 0 36px;}
     .footer__inner{max-width:1160px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px;}
@@ -263,77 +225,17 @@
       .footer__bottom{flex-direction:column;}
       .footer__disclosure{text-align:left;}
       .trust-bar__inner{gap:24px;}
-      .ml-modal__header{padding:28px 24px 0;}
-      .ml-modal__body{padding:20px 24px 28px;}
     }
     @media(max-width:480px){
       .hero__actions{flex-direction:column;align-items:flex-start;}
-      .ml-modal{border-radius:var(--radius-md);}
     }
     @media(prefers-reduced-motion:reduce){
       .fade-up{animation:none;opacity:1;}
       *{transition:none !important;}
-      .ml-modal,.ml-modal-overlay{animation:none !important;}
     }
   </style>
 </head>
 <body>
-
-  <!-- ======================================================
-       MAILERLITE MODAL — single, centralised email capture
-  ====================================================== -->
-  <div id="mlModal" class="ml-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="mlModalTitle" tabindex="-1">
-    <div class="ml-modal" role="document">
-      <div class="ml-modal__strip" aria-hidden="true"></div>
-      <button class="ml-modal__close" onclick="closeMLModal()" aria-label="Close">✕</button>
-      <div class="ml-modal__header">
-        <span class="ml-modal__icon" aria-hidden="true">🌸</span>
-        <h3 id="mlModalTitle">Your Free Saturation Session Guide</h3>
-        <p>The simple method for aligning your mindset with abundance, ease, and your highest self.</p>
-      </div>
-      <div class="ml-modal__body">
-        <!-- MailerLite embed -->
-        <div id="mlb2-42447653" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-42447653">
-          <div class="ml-form-align-center">
-            <div class="ml-form-embedWrapper embedForm">
-              <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
-                <div class="ml-form-embedContent">
-                  <h4>Get Your Free Saturation Session Guide ✨</h4>
-                  <p>Learn the simple method for aligning your mindset with abundance, ease, and your highest self.</p>
-                </div>
-                <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/2419897/forms/189905380314186774/subscribe" data-code="" method="post" target="_blank">
-                  <div class="ml-form-formContent">
-                    <div class="ml-form-fieldRow ml-last-item">
-                      <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
-                        <input aria-label="email" aria-required="true" type="email" class="form-control" data-inputmask="" name="fields[email]" placeholder="Your email address" autocomplete="email">
-                      </div>
-                    </div>
-                  </div>
-                  <input type="hidden" name="ml-submit" value="1">
-                  <div class="ml-form-embedSubmit">
-                    <button type="submit" class="primary">Send It, Girl! 💕</button>
-                    <button disabled="disabled" style="display:none;" type="button" class="loading">
-                      <div class="ml-form-embedSubmitLoad"></div>
-                      <span class="sr-only">Loading…</span>
-                    </button>
-                  </div>
-                  <input type="hidden" name="anticsrf" value="true">
-                </form>
-              </div>
-              <div class="ml-form-successBody row-success" style="display:none;">
-                <div class="ml-form-successContent">
-                  <h4>You're in! ✨</h4>
-                  <p>Check your inbox for your free guide. Happy manifesting!</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <span class="ml-modal__privacy">No spam, ever. Unsubscribe anytime. 🌿</span>
-      </div>
-    </div>
-  </div>
-
 
   <!-- NAV -->
   <nav class="nav" role="navigation" aria-label="Main navigation">
@@ -343,7 +245,7 @@
         <li><a href="#" class="active" onclick="showPage('home'); return false;">Home</a></li>
         <li><a href="#" onclick="showPage('journals'); return false;">Journals</a></li>
         <li><a href="#" onclick="showPage('affirmations'); return false;">Affirmations</a></li>
-        <li><button class="nav__cta" onclick="openMLModal()" aria-haspopup="dialog">Free Guide ✦</button></li>
+        <li><button class="nav__cta" onclick="openMailerLitePopup()">Free Guide ✦</button></li>
       </ul>
       <button class="nav__hamburger" aria-label="Open menu" onclick="toggleMobileMenu()">
         <span></span><span></span><span></span>
@@ -353,7 +255,7 @@
       <a href="#" onclick="showPage('home'); toggleMobileMenu(); return false;">Home</a>
       <a href="#" onclick="showPage('journals'); toggleMobileMenu(); return false;">Journals</a>
       <a href="#" onclick="showPage('affirmations'); toggleMobileMenu(); return false;">Affirmations</a>
-      <a href="#" onclick="openMLModal(); toggleMobileMenu(); return false;">Free Guide ✦</a>
+      <a href="#" onclick="openMailerLitePopup(); toggleMobileMenu();">Free Guide ✦</a>
     </div>
   </nav>
 
@@ -456,14 +358,14 @@
       </div>
     </section>
 
-    <!-- Home signup CTA → modal -->
+    <!-- Home signup CTA -->
     <section class="signup" aria-labelledby="signup-heading">
       <div class="signup__inner">
         <span class="eyebrow">Free Resource</span>
         <h2 id="signup-heading">Join the Soft Abundance Community</h2>
         <p>Weekly inspiration, curated finds, and mindset tools delivered with love — and zero overwhelm.</p>
         <div class="signup__offer"><span>🎁</span> Free gift: Mind Saturation Session Guide PDF</div>
-        <button class="signup__cta-btn" onclick="openMLModal()" aria-haspopup="dialog">Get the Free Guide</button>
+        <button class="signup__cta-btn" onclick="openMailerLitePopup()">Get the Free Guide</button>
         <p class="signup__disclaimer">No spam, ever. Unsubscribe anytime. Your privacy is sacred to us.</p>
       </div>
     </section>
@@ -560,13 +462,13 @@
         </div>
       </div>
     </section>
-    <!-- Journals signup CTA → modal -->
+    <!-- Journals signup CTA -->
     <section class="signup">
       <div class="signup__inner">
         <span class="eyebrow">Free Resource</span>
         <h2>Not Sure Where to Start?</h2>
         <p>Download our Mind Saturation Session PDF — a powerful guide to help you have an immersed and focused affirmation session to help you manifest faster!</p>
-        <button class="signup__cta-btn" onclick="openMLModal()" aria-haspopup="dialog">Get the Free Guide</button>
+        <button class="signup__cta-btn" onclick="openMailerLitePopup()">Get the Free Guide</button>
         <p class="signup__disclaimer">No spam. Unsubscribe any time.</p>
       </div>
     </section>
@@ -674,13 +576,13 @@
         </div>
       </div>
     </section>
-    <!-- Affirmations signup CTA → modal -->
+    <!-- Affirmations signup CTA -->
     <section class="signup">
       <div class="signup__inner">
         <span class="eyebrow">Stay Connected</span>
         <h2>Join the Soft Abundance Community</h2>
         <p>Get the free mind saturation session guide and get notified when new resources drop, plus journal prompts and curated tools delivered to your inbox.</p>
-        <button class="signup__cta-btn" onclick="openMLModal()" aria-haspopup="dialog">Join Free</button>
+        <button class="signup__cta-btn" onclick="openMailerLitePopup()">Join Free</button>
         <p class="signup__disclaimer">No spam. Unsubscribe any time.</p>
       </div>
     </section>
@@ -709,7 +611,7 @@
         <h5>Explore</h5>
         <ul>
           <li><a href="#" onclick="showPage('home'); return false;">About</a></li>
-          <li><button onclick="openMLModal()">Free Guide</button></li>
+          <li><button onclick="openMailerLitePopup()">Free Guide</button></li>
         </ul>
       </div>
     </div>
@@ -720,37 +622,19 @@
   </footer>
 
 
-  <!-- MailerLite scripts -->
-  <script src="https://groot.mailerlite.com/js/w/webforms.min.js?v83147fa8ce2d95cb73ece7f28b469519" type="text/javascript"></script>
-  <script>
-    function ml_webform_success_42447653() {
-      var $ = ml_jQuery || jQuery;
-      $('.ml-subscribe-form-42447653 .row-success').show();
-      $('.ml-subscribe-form-42447653 .row-form').hide();
-    }
-  </script>
-  <script>fetch("https://assets.mailerlite.com/jsonp/2419897/forms/189905380314186774/takel");</script>
-
   <!-- Site JS -->
   <script>
-    // MODAL
-    function openMLModal() {
-      var overlay = document.getElementById('mlModal');
-      overlay.classList.add('open');
-      overlay.focus();
-      document.body.style.overflow = 'hidden';
+    // MAILERLITE POPUP TRIGGER
+    // All newsletter / guide / community CTAs call this single function.
+    // No raw form fields live on the page — MailerLite's hosted popup
+    // (form code: jUkgRH) handles the actual email capture.
+    function openMailerLitePopup() {
+      if (typeof ml === 'function') {
+        ml('show', 'jUkgRH', true);
+      } else {
+        console.warn('MailerLite script not loaded yet');
+      }
     }
-    function closeMLModal() {
-      var overlay = document.getElementById('mlModal');
-      overlay.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-    document.getElementById('mlModal').addEventListener('click', function(e) {
-      if (e.target === this) closeMLModal();
-    });
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeMLModal();
-    });
 
     // PAGE ROUTING
     var pages = ['home', 'journals', 'affirmations'];
@@ -804,5 +688,6 @@
       });
     });
   </script>
+
 </body>
 </html>
