@@ -64,8 +64,10 @@
     .btn-primary:hover{background:var(--rose-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(168,101,88,0.3);}
     .btn-outline{background:transparent;color:var(--charcoal);border:1.5px solid var(--warm-grey);}
     .btn-outline:hover{border-color:var(--rose);color:var(--rose);transform:translateY(-2px);}
-    .btn-amazon{background:var(--cream);color:var(--charcoal);border:1.5px solid var(--blush-deep);font-size:0.78rem;padding:11px 28px;width:100%;text-align:center;transition:var(--transition);display:inline-block;}
+    .btn-amazon{background:transparent;color:var(--charcoal);border:1.5px solid var(--charcoal);font-size:0.78rem;padding:12px 26px;width:auto;text-align:center;transition:var(--transition);display:inline-flex;align-items:center;gap:10px;align-self:flex-start;}
+    .btn-amazon::before{content:'★';font-size:0.68rem;color:var(--rose);}
     .btn-amazon:hover{background:var(--rose);color:var(--white);border-color:var(--rose);transform:translateY(-1px);}
+    .btn-amazon:hover::before{color:var(--white);}
 
     /* NAV */
     .nav{position:sticky;top:0;z-index:100;background:rgba(254,254,254,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(194,184,176,0.25);padding:0 24px;}
@@ -142,11 +144,12 @@
     .signup__cta-btn:hover{background:var(--blush-deep);transform:translateY(-2px);box-shadow:0 8px 28px rgba(201,135,122,0.35);}
     .signup__disclaimer{font-size:0.72rem;color:rgba(255,255,255,0.35);margin-top:20px;max-width:none;}
 
-    /* PRODUCT CARDS */
-    .products__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:32px;margin-top:56px;}
-    .product-card{background:var(--white);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-card);transition:transform var(--transition),box-shadow var(--transition);display:flex;flex-direction:column;}
+    /* PRODUCT CARDS — horizontal layout: large inset image left, info right */
+    .products__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(460px,1fr));gap:32px;margin-top:56px;}
+    .product-card{background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);transition:transform var(--transition),box-shadow var(--transition);display:flex;flex-direction:row;align-items:stretch;padding:28px;gap:28px;}
     .product-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(58,50,48,0.13);}
-    .product-card__img{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative;overflow:hidden;}
+    .product-card__img{width:38%;flex-shrink:0;align-self:flex-start;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative;overflow:hidden;border-radius:var(--radius-md);}
+    .product-card__img img{width:100%;height:100%;object-fit:cover;}
     .product-card__img--1{background:linear-gradient(145deg,#F5E0D8,#EDD5CA);}
     .product-card__img--2{background:linear-gradient(145deg,#E8F0F5,#D5E2EA);}
     .product-card__img--3{background:linear-gradient(145deg,#F0EAE0,#E5D8CA);}
@@ -155,7 +158,7 @@
     .product-card__img--6{background:linear-gradient(145deg,#EDE8F5,#D8D0EA);}
     .product-card__img--7{background:linear-gradient(145deg,#F5F0E0,#EAE0C8);}
     .product-card__badge{position:absolute;top:14px;left:14px;background:var(--rose);color:var(--white);font-size:0.65rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:50px;}
-    .product-card__body{padding:28px;display:flex;flex-direction:column;flex:1;}
+    .product-card__body{padding:0;display:flex;flex-direction:column;flex:1;min-width:0;justify-content:center;}
     .product-card__category{font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--rose);font-weight:500;margin-bottom:8px;}
     .product-card__title{font-family:var(--font-display);font-size:1.25rem;font-weight:400;line-height:1.3;color:var(--charcoal);margin-bottom:10px;}
     .product-card__desc{font-size:0.88rem;line-height:1.65;margin-bottom:20px;flex:1;}
@@ -215,6 +218,7 @@
       .about__inner{grid-template-columns:1fr;gap:40px;}
       .about__visual{max-height:280px;}
       .footer__inner{grid-template-columns:1fr 1fr;}
+      .products__grid{grid-template-columns:1fr;}
     }
     @media(max-width:700px){
       .section{padding:64px 0;}
@@ -225,6 +229,8 @@
       .footer__bottom{flex-direction:column;}
       .footer__disclosure{text-align:left;}
       .trust-bar__inner{gap:24px;}
+      .product-card{flex-direction:column;}
+      .product-card__img{width:100%;aspect-ratio:4/3;align-self:stretch;}
     }
     @media(max-width:480px){
       .hero__actions{flex-direction:column;align-items:flex-start;}
@@ -244,7 +250,9 @@
       <ul class="nav__links" role="list">
         <li><a href="#" class="active" onclick="showPage('home'); return false;">Home</a></li>
         <li><a href="#" onclick="showPage('journals'); return false;">Journals</a></li>
-        <li><a href="#" onclick="showPage('affirmations'); return false;">Affirmations</a></li>
+        <li><a href="#" onclick="showPage('affirmations'); return false;">Tools</a></li>
+        <li><a href="#" onclick="showPage('scents'); return false;">Scents</a></li>
+        <li><a href="#" onclick="showPage('decor'); return false;">Decor</a></li>
         <li><button class="nav__cta" onclick="openMailerLitePopup()">Free Guide ✦</button></li>
       </ul>
       <button class="nav__hamburger" aria-label="Open menu" onclick="toggleMobileMenu()">
@@ -254,7 +262,9 @@
     <div class="nav__mobile" id="mobileMenu" role="menu">
       <a href="#" onclick="showPage('home'); toggleMobileMenu(); return false;">Home</a>
       <a href="#" onclick="showPage('journals'); toggleMobileMenu(); return false;">Journals</a>
-      <a href="#" onclick="showPage('affirmations'); toggleMobileMenu(); return false;">Affirmations</a>
+      <a href="#" onclick="showPage('affirmations'); toggleMobileMenu(); return false;">Tools</a>
+      <a href="#" onclick="showPage('scents'); toggleMobileMenu(); return false;">Scents</a>
+      <a href="#" onclick="showPage('decor'); toggleMobileMenu(); return false;">Decor</a>
       <a href="#" onclick="openMailerLitePopup(); toggleMobileMenu();">Free Guide ✦</a>
     </div>
   </nav>
@@ -269,8 +279,8 @@
           <h1 class="hero__title">Create an <em>Abundant</em> Life with Intention</h1>
           <p class="hero__sub">Discover carefully selected journals, affirmation tools, and mindset resources designed to help you cultivate clarity, confidence, and abundance.</p>
           <div class="hero__actions">
-            <a href="#" class="btn btn-primary" onclick="showPage('journals'); return false;">Explore Journals</a>
-            <a href="#" class="btn btn-outline" onclick="showPage('affirmations'); return false;">Browse Affirmations</a>
+            <a href="#" class="btn btn-primary" ; return false;">Explore Our Collection</a>
+            <a href="#" class="btn btn-outline" ; return false;">Make Your Picks!</a>
           </div>
         </div>
         <div class="hero__visual fade-up fade-up--delay-2">
@@ -318,9 +328,33 @@
             </div>
             <div class="category-card__body">
               <span class="eyebrow">Category Two</span>
-              <h3 class="category-card__title">Affirmation Cards & Mindset Tools</h3>
-              <p class="category-card__desc">Rewire limiting beliefs and embody your highest self. These tangible tools make the invisible shift visible — one card at a time.</p>
-              <a href="#" class="btn btn-primary" onclick="showPage('affirmations'); return false;">Shop Affirmations</a>
+              <h3 class="category-card__title">Affirmation Cards & Mindset Work Tools</h3>
+              <p class="category-card__desc">Rewire limiting beliefs and embody your highest with these tools.</p>
+              <a href="#" class="btn btn-primary" onclick="showPage('affirmations'); return false;">Shop Tools</a>
+            </div>
+          </article>
+        </div>
+        <div class="categories__grid">
+          <article class="category-card">
+            <div class="category-card__img category-card__img--journals" role="img" aria-label="Journals collection">
+              <img src="assets/scents.jpg" alt="scent">
+            </div>
+            <div class="category-card__body">
+              <span class="eyebrow">Category Three</span>
+              <h3 class="category-card__title">Scents & Ambience</h3>
+              <p class="category-card__desc">Create a space that feels as good as the life you're calling in. Let calming scents, soft aromas, and intentional ambiance turn everyday moments into rituals of peace, presence, and abundance.</p>
+              <a href="#" class="btn btn-primary" onclick="showPage('scents'); return false;">Shop Scents</a>
+            </div>
+          </article>
+          <article class="category-card">
+            <div class="category-card__img category-card__img--affirmations" role="img" aria-label="Affirmation cards collection">
+              <img src="assets/Home decoration!.jpg" alt="affirmation">
+            </div>
+            <div class="category-card__body">
+              <span class="eyebrow">Category Four</span>
+              <h3 class="category-card__title">Abundant Living & Décor</h3>
+              <p class="category-card__desc">Create a space that reflects the life you're calling in. Thoughtfully chosen décor and beautiful pieces transform your surroundings into intentional reminders of abundance, possibility, and the woman you're becoming.</p>
+              <a href="#" class="btn btn-primary" onclick="showPage('decor'); return false;">Shop Décor</a>
             </div>
           </article>
         </div>
@@ -410,15 +444,15 @@
             </div>
             <div class="product-card__body">
               <span class="product-card__category">Manifestation</span>
-              <h2 class="product-card__title">The Miracle Manifestation Journal</h2>
+              <h2 class="product-card__title">The Miracle Journal</h2>
               <p class="product-card__desc">A deeply intentional journal designed to guide you from where you are to where your soul knows you're meant to be. Perfect for beginners and seasoned manifestors alike.</p>
               <ul class="product-card__features">
-                <li class="product-card__feature">Guided prompts rooted in Law of Attraction principles</li>
+                <li class="product-card__feature">Guided prompts rooted in Law of Assumption principles</li>
                 <li class="product-card__feature">Visualisation exercises and scripting pages</li>
                 <li class="product-card__feature">Affirmation sections to reinforce your identity</li>
-                <li class="product-card__feature">90-day framework for focused intention-setting</li>
+                
               </ul>
-              <a href="https://amzn.to/4vx4gcl" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
+              <a href="https://amzn.to/4guCdG0" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
               <p class="product-card__disclaimer">✦ As an Amazon Associate, we may earn a commission from qualifying purchases at no extra cost to you.</p>
             </div>
           </article>
@@ -480,32 +514,14 @@
     <div class="page-header">
       <div class="page-header__inner">
         <span class="eyebrow">Mindset Tools</span>
-        <h1>Affirmation Cards & Mindset Tools</h1>
+        <h1>Affirmation Cards & Mindset Work Tools</h1>
         <hr class="divider" />
-        <p>Words have power. These carefully designed card decks make it easy to reprogram your thoughts and step into the woman you're becoming — one affirmation at a time.</p>
+        <p>Create rituals that support the woman you’re becoming. From mindful movement and meditation to powerful affirmations and inspiring reminders, each piece is designed to help you slow down, reconnect with yourself, and make your desired reality feel a little more present every day.</p>
       </div>
     </div>
     <section class="section">
       <div class="container">
         <div class="products__grid">
-          <article class="product-card">
-            <div class="product-card__img product-card__img--5" role="img" aria-label="Watercolor Affirmation Cards">
-              <img src="assets/pink.jpg" alt="">
-            </div>
-            <div class="product-card__body">
-              <span class="product-card__category">Affirmation Cards</span>
-              <h2 class="product-card__title">Watercolor Affirmation Cards</h2>
-              <p class="product-card__desc">Beautifully illustrated cards that make your affirmation practice a visual delight. Display them on your desk, mirror, or altar — let your space speak abundance back to you.</p>
-              <ul class="product-card__features">
-                <li class="product-card__feature">80 unique affirmations across key life areas</li>
-                <li class="product-card__feature">Gorgeous watercolour artwork — Pinterest-worthy</li>
-                <li class="product-card__feature">Premium card stock, double-sided design</li>
-                <li class="product-card__feature">Covers love, abundance, confidence & self-worth</li>
-              </ul>
-              <a href="https://amzn.to/3RYOmJp" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
-              <p class="product-card__disclaimer">✦ As an Amazon Associate, we may earn a commission from qualifying purchases at no extra cost to you.</p>
-            </div>
-          </article>
           <article class="product-card">
             <div class="product-card__img product-card__img--6" role="img" aria-label="Intelligent Change Mindful Affirmations">
               <img src="assets/mindful-aff.jpg" alt="">
@@ -526,23 +542,146 @@
             </div>
           </article>
           <article class="product-card">
-            <div class="product-card__img product-card__img--7" role="img" aria-label="Badass Affirmation Cards">
-              <img src="assets/badass.jpg" alt="">
-              <span class="product-card__badge">Bold Pick</span>
+            <div class="product-card__img product-card__img--5" role="img" aria-label="Watercolor Affirmation Cards">
+              <img src="assets/jar.png" alt="">
             </div>
             <div class="product-card__body">
-              <span class="product-card__category">Empowerment Cards</span>
-              <h2 class="product-card__title">Badass Affirmation Cards</h2>
-              <p class="product-card__desc">For days when you need something a little more fierce. These bold, unapologetic affirmation cards remind you of your power when the world tries to make you forget.</p>
+              <span class="product-card__category">Affirmation Cards</span>
+              <h2 class="product-card__title">Positive Affirmation Jar</h2>
+              <p class="product-card__desc">Beautifully illustrated cards that make your affirmation practice a visual delight. Display them on your desk, mirror, or altar — let your space speak abundance back to you.</p>
               <ul class="product-card__features">
-                <li class="product-card__feature">Unapologetically confident messaging</li>
-                <li class="product-card__feature">Perfect for women reclaiming their worth</li>
-                <li class="product-card__feature">Durable laminated finish — daily-use ready</li>
-                <li class="product-card__feature">Great as a gift for a friend who needs a boost</li>
+                <li class="product-card__feature">90 unique affirmations across key life areas</li>
+                <li class="product-card__feature">Gorgeous artwork — Pinterest-worthy</li>
+                <li class="product-card__feature">Premium card stock</li>
+                <li class="product-card__feature">Covers love, hope, abundance, confidence & self-worth</li>
               </ul>
-              <a href="https://amzn.to/4dX868S" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
+              <a href="https://amzn.to/4itlrsn" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
               <p class="product-card__disclaimer">✦ As an Amazon Associate, we may earn a commission from qualifying purchases at no extra cost to you.</p>
             </div>
+          </article>
+           <article class="product-card">
+            <div class="product-card__img product-card__img--7" role="img" aria-label="Badass Affirmation Cards">
+              <img src="assets/Yoga Mat.jpg" alt="">
+             
+            </div>
+            <div class="product-card__body">
+              <span class="product-card__category">MANIFESTATION SESSION TOOL</span>
+              <h2 class="product-card__title">Yoga Design Lab Yoga Mat</h2>
+              <p class="product-card__desc">For the days when you need to reconnect with yourself, move with intention, and remember your own strength.</p>
+              <ul class="product-card__features">
+                <li class="product-card__feature">Designed for mindful movement and daily practice</li>
+                <li class="product-card__feature">A beautiful reminder to slow down, breathe, and reconnect</li>
+                <li class="product-card__feature">Perfect for yoga, stretching, meditation, or at-home workouts</li>
+                <li class="product-card__feature">Stylish design that makes your practice space feel elevated</li>
+              </ul>
+              <a href="https://amzn.to/4x0F0M1" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
+              <p class="product-card__disclaimer">✦ As an Amazon Associate, we may earn a commission from qualifying purchases at no extra cost to you.</p>
+            </div>
+      
+          </article>
+             </article>
+           <article class="product-card">
+            <div class="product-card__img product-card__img--7" role="img" aria-label="Badass Affirmation Cards">
+              <img src="assets/meditation.jpg" alt="">
+             
+            </div>
+            <div class="product-card__body">
+              <span class="product-card__category">MANIFESTATION SESSION TOOL</span>
+              <h2 class="product-card__title">IKUKO Meditation Bench</h2>
+              <p class="product-card__desc">For the moments when you need to quiet the noise, come back to yourself, and simply be.</p>
+              <ul class="product-card__features">
+                <li class="product-card__feature">Encourages a more comfortable, grounded meditation practice</li>
+                <li class="product-card__feature">Perfect for mindfulness, breathwork, prayer, or quiet reflection</li>
+                <li class="product-card__feature">Creates a beautiful, intentional space for slowing down</li>
+                <li class="product-card__feature">Ideal for beginners and experienced meditators alike</li>
+              </ul>
+              <a href="https://amzn.to/4gIb4hz" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
+              <p class="product-card__disclaimer">✦ As an Amazon Associate, we may earn a commission from qualifying purchases at no extra cost to you.</p>
+            </div>
+      
+          </article>
+                </article>
+           <article class="product-card">
+            <div class="product-card__img product-card__img--7" role="img" aria-label="Badass Affirmation Cards">
+              <img src="assets/wall art.png" alt="">
+             
+            </div>
+            <div class="product-card__body">
+              <span class="product-card__category">MANIFESTATION ART</span>
+              <h2 class="product-card__title">Framed Wall Art</h2>
+              <p class="product-card__desc">For the days when you need a reminder that what you desire is already making its way to you.</p>
+              <ul class="product-card__features">
+                <li class="product-card__feature">Powerful manifestation affirmation for your everyday space</li>
+                <li class="product-card__feature">Encourages confidence, trust, and an abundant mindset</li>
+                <li class="product-card__feature">Perfect for bedrooms, offices, meditation spaces, or vision boards</li>
+                <li class="product-card__feature">A thoughtful gift for anyone stepping into their next chapter</li>
+              </ul>
+              <a href="https://amzn.to/3UAqsFt" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
+              <p class="product-card__disclaimer">✦ As an Amazon Associate, we may earn a commission from qualifying purchases at no extra cost to you.</p>
+            </div>
+      
+          </article>
+             </article>
+           <article class="product-card">
+            <div class="product-card__img product-card__img--7" role="img" aria-label="Badass Affirmation Cards">
+              <img src="assets/what if.png" alt="">
+             
+            </div>
+            <div class="product-card__body">
+              <span class="product-card__category">MANIFESTATION ART</span>
+              <h2 class="product-card__title">“What If It All Works Out?” Framed Wall Art</h2>
+              <p class="product-card__desc">For the moments when doubt gets loud and you need a gentle reminder to choose possibility instead.</p>
+              <ul class="product-card__features">
+                <li class="product-card__feature">A gentle reminder to trust the journey</li>
+                <li class="product-card__feature">Encourages optimism, possibility, and an abundant mindset</li>
+                <li class="product-card__feature">Perfect for bedrooms, offices, meditation spaces, or living areas</li>
+                <li class="product-card__feature">Minimal, elevated design that adds meaning to your space</li>
+              </ul>
+              <a href="https://amzn.to/4yjAysR" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
+              <p class="product-card__disclaimer">✦ As an Amazon Associate, we may earn a commission from qualifying purchases at no extra cost to you.</p>
+            </div>
+      
+          </article>
+           </article>
+           <article class="product-card">
+            <div class="product-card__img product-card__img--7" role="img" aria-label="Badass Affirmation Cards">
+              <img src="assets/crystals.jpg" alt="">
+             
+            </div>
+            <div class="product-card__body">
+              <span class="product-card__category">CRYSTAL</span>
+              <h2 class="product-card__title">Gemstone Crystals</h2>
+              <p class="product-card__desc">For the moments when you want to slow down, set an intention, and reconnect with your energy.</p>
+              <ul class="product-card__features">
+                <li class="product-card__feature">Beautiful reminders to set and hold your intentions</li>
+                <li class="product-card__feature">Perfect for manifestation, meditation, mindfulness, or self-care rituals</li>
+                <li class="product-card__feature">Adds an intentional, elevated touch to your space</li>
+                <li class="product-card__feature">Easy to incorporate into your daily spiritual or wellness practice</li>
+              </ul>
+              <a href="https://amzn.to/4xa60ZJ" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
+              <p class="product-card__disclaimer">✦ As an Amazon Associate, we may earn a commission from qualifying purchases at no extra cost to you.</p>
+            </div>
+      
+          </article>
+           </article>
+           <article class="product-card">
+            <div class="product-card__img product-card__img--7" role="img" aria-label="Badass Affirmation Cards">
+              <img src="assets/anima.png" alt="">
+             
+            </div>
+            <div class="product-card__body">
+              <span class="product-card__category">CRYSTAL</span>
+              <h2 class="product-card__title">Anima Crystal Set</h2>
+              <p class="product-card__desc">For the moments when you want to reconnect with your intentions, welcome more abundance, and create a meaningful manifestation ritual. This thoughtfully curated crystal set is designed to bring beauty and intention to your space while serving as a daily reminder of the abundance you're calling into your life.</p>
+              <ul class="product-card__features">
+                <li class="product-card__feature">Beautiful crystals selected to complement abundance rituals</li>
+                <li class="product-card__feature">Perfect for manifestation, meditation, journaling, or intention-setting</li>
+                <li class="product-card__feature">A thoughtful gift for anyone embracing abundance and personal growth</li>
+              </ul>
+              <a href="https://amzn.to/46Dq6jZ" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
+              <p class="product-card__disclaimer">✦ As an Amazon Associate, we may earn a commission from qualifying purchases at no extra cost to you.</p>
+            </div>
+      
           </article>
         </div>
         <div class="section--cream" style="margin-top:80px;border-radius:var(--radius-lg);padding:56px 48px;">
@@ -588,6 +727,283 @@
     </section>
   </main>
 
+  <!-- SCENTS PAGE -->
+  <main id="page-scents" class="page">
+    <div class="page-header">
+      <div class="page-header__inner">
+        <span class="eyebrow">Curated Collection</span>
+        <h1>Scents & Ambience</h1>
+        <hr class="divider" />
+        <p>The right scent can transform a space and shift the way you feel. These carefully selected candles and diffusers are designed to help you create moments of calm, intention, and comfort — turning everyday spaces into beautiful rituals.</p>
+      </div>
+    </div>
+    <section class="section">
+      <div class="container">
+        <div class="products__grid">
+          <article class="product-card">
+            <div class="product-card__img product-card__img--1" role="img" aria-label="6-Minute Diary">
+              <img src="assets/neom.jpg" alt="">
+              <span class="product-card__badge">Bestseller</span>
+            </div>
+            <div class="product-card__body">
+              <span class="product-card__category">Scented Candle</span>
+              <h2 class="product-card__title">NEOM - Lavender, Chamomile & Patchoui Candle</h2>
+              <p class="product-card__desc">For the moments when you want to slow down, reset your energy, and make your space feel a little more intentional.</p>
+              <ul class="product-card__features">
+                <li class="product-card__feature">Creates a calming atmosphere for rest and relaxation</li>
+                <li class="product-card__feature">Perfect for meditation, journaling, self-care, or winding down</li>
+                <li class="product-card__feature">Beautiful addition to bedrooms, bathrooms, or cozy corners</li>
+                <li class="product-card__feature">Elevates everyday rituals with a luxurious sensory experience</li>
+              </ul>
+              <a href="https://amzn.to/4cnfgCb" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
+              <p class="product-card__disclaimer">✦ As an Amazon Associate, we may earn a commission from qualifying purchases at no extra cost to you.</p>
+            </div>
+          </article>
+          <article class="product-card">
+            <div class="product-card__img product-card__img--2" role="img" aria-label="Miracle Manifestation Journal">
+              <img src="assets/nest.jpg" alt="">
+            </div>
+            <div class="product-card__body">
+              <span class="product-card__category">Scented Candle</span>
+              <h2 class="product-card__title">NEST New York Scented Candle</h2>
+              <p class="product-card__desc">For the moments when you want to slow down, create a beautiful atmosphere, and turn an ordinary evening into something a little more special.</p>
+              <ul class="product-card__features">
+                <li class="product-card__feature">Creates a warm, inviting atmosphere in any space</li>
+                <li class="product-card__feature">Perfect for meditation, journaling, self-care, or winding down</li>
+                <li class="product-card__feature">Beautiful addition to bedrooms, living spaces, or cozy corners</li>
+                <li class="product-card__feature">A thoughtful gift for anyone who deserves a little more calm</li>
+                
+              </ul>
+              <a href="https://amzn.to/4qVmKSW" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
+              <p class="product-card__disclaimer">✦ As an Amazon Associate, we may earn a commission from qualifying purchases at no extra cost to you.</p>
+            </div>
+          </article>
+          <article class="product-card">
+            <div class="product-card__img product-card__img--3" role="img" aria-label="Gratitude Journal">
+              <img src="assets/diffuser.jpg" alt="">
+              <span class="product-card__badge">Staff Pick</span>
+            </div>
+            <div class="product-card__body">
+              <span class="product-card__category">Diffuser</span>
+              <h2 class="product-card__title">LAFCO New York Signature Reed Diffuser</h2>
+              <p class="product-card__desc">For the moments when you want your space to feel calmer, warmer, and more intentional. This beautifully scented diffuser fills your surroundings with a continuous, inviting fragrance, turning everyday spaces into soothing environments for rest, reflection, and self-care.</p>
+              <ul class="product-card__features">
+                <li class="product-card__feature">Creates a calming atmosphere with a beautiful, lasting fragrance</li>
+                <li class="product-card__feature">Perfect for meditation, journaling, self-care, or winding down</li>
+                <li class="product-card__feature">Beautiful addition to bedrooms, bathrooms, living spaces, or offices</li>
+                
+              </ul>
+              <a href="https://amzn.to/3SdcOH0" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
+              <p class="product-card__disclaimer">✦ As an Amazon Associate, we may earn a commission from qualifying purchases at no extra cost to you.</p>
+            </div>
+          </article>
+          <article class="product-card">
+            <div class="product-card__img product-card__img--4" role="img" aria-label="Clever Fox Self-Care Journal">
+              <img src="assets/Apotheke.jpg" alt="">
+            </div>
+            <div class="product-card__body">
+              <span class="product-card__category">Diffuser</span>
+              <h2 class="product-card__title">Apotheke Scented Diffuser</h2>
+              <p class="product-card__desc">For the moments when you want your space to feel calm, inviting, and effortlessly elevated. This beautifully crafted diffuser fills your surroundings with a sophisticated fragrance, creating an atmosphere that makes everyday rituals feel more intentional and indulgent.</p>
+              <ul class="product-card__features">
+                <li class="product-card__feature">Creates a warm, inviting atmosphere with a lasting fragrance</li>
+                <li class="product-card__feature">Perfect for meditation, journaling, self-care, or winding down</li>
+                <li class="product-card__feature">Beautiful addition to bedrooms, living spaces, bathrooms, or offices</li>
+                
+              </ul>
+              <a href="https://amzn.to/4xjmKPh" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
+              <p class="product-card__disclaimer">✦ As an Amazon Associate, we may earn a commission from qualifying purchases at no extra cost to you.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- Scents signup CTA -->
+    <section class="signup">
+      <div class="signup__inner">
+        <span class="eyebrow">Free Resource</span>
+        <h2>Not Sure Where to Start?</h2>
+        <p>Download our Mind Saturation Session PDF — a powerful guide to help you have an immersed and focused affirmation session to help you manifest faster!</p>
+        <button class="signup__cta-btn" onclick="openMailerLitePopup()">Get the Free Guide</button>
+        <p class="signup__disclaimer">No spam. Unsubscribe any time.</p>
+      </div>
+    </section>
+  </main>
+
+   <!-- DECOR PAGE -->
+  <main id="page-decor" class="page">
+    <div class="page-header">
+      <div class="page-header__inner">
+        <span class="eyebrow">Curated Collection</span>
+        <h1>Abundant Living & Décor</h1>
+        <hr class="divider" />
+        <p>The right pieces can transform a space and shift the way you feel. These carefully selected décor pieces are designed to help you create a home that feels intentional, inspiring, and abundant — turning your surroundings into beautiful reminders of the life you're creating.
+</p>
+      </div>
+    </div>
+    <section class="section">
+      <div class="container">
+        <div class="products__grid">
+          <article class="product-card">
+            <div class="product-card__img product-card__img--1" role="img" aria-label="6-Minute Diary">
+              <img src="assets/mirror.png" alt="">
+              <span class="product-card__badge">Bestseller</span>
+            </div>
+            <div class="product-card__body">
+              <span class="product-card__category">Vanity Mirror</span>
+              <h2 class="product-card__title">LED Asymmetrical Vanity Mirror</h2>
+              <p class="product-card__desc">For the moments when getting ready becomes more than just a routine. This beautifully sculpted LED mirror brings a soft, elevated feel to your space while creating the perfect setting for your morning rituals, self-care, and daily affirmations.</p>
+              <ul class="product-card__features">
+                <li class="product-card__feature">Elegant asymmetrical design that adds a refined touch to your space</li>
+                <li class="product-card__feature">Three lighting tones to complement your morning and evening rituals</li>
+                <li class="product-card__feature">A beautiful addition to an intentional, feminine, and elevated home</li>
+              </ul>
+              <a href="https://amzn.to/3SGi6LX" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
+              <p class="product-card__disclaimer">✦ As an Amazon Associate, we may earn a commission from qualifying purchases at no extra cost to you.</p>
+            </div>
+          </article>
+          <article class="product-card">
+            <div class="product-card__img product-card__img--2" role="img" aria-label="Miracle Manifestation Journal">
+              <img src="assets/round mirror.png" alt="">
+            </div>
+            <div class="product-card__body">
+              <span class="product-card__category">Vanity Mirror</span>
+              <h2 class="product-card__title">BEAUTYPEAK Round LED Vanity Mirror</h2>
+              <p class="product-card__desc">For the moments when you want your space to feel a little more beautiful — and your daily rituals a little more intentional. This elegant round LED mirror brings a soft, polished glow to your space, making everything from getting ready to practicing your morning affirmations feel beautifully elevated.</p>
+              <ul class="product-card__features">
+                <li class="product-card__feature">Dimmable lighting to create a soft glow for any moment</li>
+                <li class="product-card__feature">Tempered glass for a sleek and durable finish</li>
+                <li class="product-card__feature">A beautiful piece for creating a home that feels intentional, peaceful, and abundant</li>
+                
+                
+              </ul>
+              <a href="https://amzn.to/4yoBlZK" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
+              <p class="product-card__disclaimer">✦ As an Amazon Associate, we may earn a commission from qualifying purchases at no extra cost to you.</p>
+            </div>
+          </article>
+          <article class="product-card">
+            <div class="product-card__img product-card__img--3" role="img" aria-label="Gratitude Journal">
+              <img src="assets/tray.png" alt="">
+              <span class="product-card__badge">Staff Pick</span>
+            </div>
+            <div class="product-card__body">
+              <span class="product-card__category">Vanity Tray</span>
+              <h2 class="product-card__title">Natural Marble Vanity Tray</h2>
+              <p class="product-card__desc">For the little luxuries that make your everyday routine feel more intentional. Crafted from natural marble with a warm, timeless finish, this elegant vanity tray creates a beautiful home for your favorite perfumes, jewelry, candles, and beauty essentials — turning everyday objects into part of your ritual.</p>
+              <ul class="product-card__features">
+                <li class="product-card__feature">Natural marble design with a timeless, elevated aesthetic</li>
+                <li class="product-card__feature">Perfect for organizing perfumes, jewelry, cosmetics, candles, and everyday essentials</li>
+                <li class="product-card__feature">Creates a beautifully curated space that feels calm, intentional, and organized</li>
+                
+              </ul>
+              <a href="https://amzn.to/46KaqLO" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
+              <p class="product-card__disclaimer">✦ As an Amazon Associate, we may earn a commission from qualifying purchases at no extra cost to you.</p>
+            </div>
+          </article>
+          <article class="product-card">
+            <div class="product-card__img product-card__img--4" role="img" aria-label="Clever Fox Self-Care Journal">
+              <img src="assets/silver tray.png" alt="">
+            </div>
+            <div class="product-card__body">
+              <span class="product-card__category">Vanity Tray</span>
+              <h2 class="product-card__title">Silver Ceramic Vanity Tray</h2>
+              <p class="product-card__desc">For the little details that make your space feel beautifully put together. This elegant silver ceramic tray creates a refined home for your favorite jewelry, perfumes, beauty essentials, and everyday treasures — bringing a touch of understated luxury to your daily rituals.</p>
+              <ul class="product-card__features">
+                <li class="product-card__feature">Elegant silver finish for a polished, sophisticated look</li>
+                <li class="product-card__feature">Perfect for jewelry, perfume, cosmetics, candles, and small essentials</li>
+                <li class="product-card__feature">Adds an elevated touch to your bathroom counter, dresser, or vanity</li>
+                
+              </ul>
+              <a href="https://amzn.to/3SIoSko" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
+              <p class="product-card__disclaimer">✦ As an Amazon Associate, we may earn a commission from qualifying purchases at no extra cost to you.</p>
+            </div>
+          </article>
+             <article class="product-card">
+            <div class="product-card__img product-card__img--4" role="img" aria-label="Clever Fox Self-Care Journal">
+              <img src="assets/gold vase.png" alt="">
+            </div>
+            <div class="product-card__body">
+              <span class="product-card__category">Decorative Vase</span>
+              <h2 class="product-card__title">Gold Bust Head Ceramic Vase</h2>
+              <p class="product-card__desc">For the spaces where beauty becomes part of your everyday experience. This striking gold ceramic vase combines sculptural artistry with feminine elegance, creating a statement piece that brings personality, warmth, and a touch of luxury to your home.</p>
+              <ul class="product-card__features">
+                <li class="product-card__feature">Sculptural bust-inspired design with an elegant gold finish</li>
+                <li class="product-card__feature">Perfect for shelves, bedside tables, desks, mantles, entryways, or consoles</li>
+                <li class="product-card__feature">A statement piece that complements an elevated, curated space</li>
+                
+              </ul>
+              <a href="https://amzn.to/4i7ScLm" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
+              <p class="product-card__disclaimer">✦ As an Amazon Associate, we may earn a commission from qualifying purchases at no extra cost to you.</p>
+            </div>
+          </article>
+             <article class="product-card">
+            <div class="product-card__img product-card__img--4" role="img" aria-label="Clever Fox Self-Care Journal">
+              <img src="assets/silver vase.png" alt="">
+            </div>
+            <div class="product-card__body">
+              <span class="product-card__category">Decorative Vase</span>
+              <h2 class="product-card__title">Hug Donut Decorative Vase Set</h2>
+              <p class="product-card__desc">For the spaces that deserve a little more beauty and intention. These sculptural ceramic vases bring a soft, modern touch to your home while adding an effortlessly elegant focal point to shelves, tables, mantles, and entryways.</p>
+              <ul class="product-card__features">
+                <li class="product-card__feature">Unique donut-inspired design for a modern, artistic feel</li>
+                <li class="product-card__feature">Beautiful on its own or paired with flowers and other decorative accents</li>
+                <li class="product-card__feature">Adds a refined, feminine touch to your everyday surroundings</li>
+                
+              </ul>
+              <a href="https://amzn.to/4hbj2kE" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
+              <p class="product-card__disclaimer">✦ As an Amazon Associate, we may earn a commission from qualifying purchases at no extra cost to you.</p>
+            </div>
+          </article>
+             <article class="product-card">
+            <div class="product-card__img product-card__img--4" role="img" aria-label="Clever Fox Self-Care Journal">
+              <img src="assets/lamp.png" alt="">
+            </div>
+            <div class="product-card__body">
+              <span class="product-card__category">Lamp Set</span>
+              <h2 class="product-card__title">Alabaster Table Lamp Set</h2>
+              <p class="product-card__desc">For the moments when you want your home to feel softer, warmer, and more inviting. These elegant alabaster-inspired table lamps bring a gentle glow to your surroundings, creating the perfect ambiance for quiet evenings, journaling, reading, or simply slowing down and enjoying your space.</p>
+              <ul class="product-card__features">
+                <li class="product-card__feature">Set of two elegant table lamps for a beautifully balanced look</li>
+                <li class="product-card__feature">Soft, warm illumination that creates a cozy and inviting atmosphere</li>
+                <li class="product-card__feature">Perfect for a home that feels calm, intentional, warm, and abundant</li>
+                
+              </ul>
+              <a href="https://amzn.to/4gU7HUV" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
+              <p class="product-card__disclaimer">✦ As an Amazon Associate, we may earn a commission from qualifying purchases at no extra cost to you.</p>
+            </div>
+          </article>
+             <article class="product-card">
+            <div class="product-card__img product-card__img--4" role="img" aria-label="Clever Fox Self-Care Journal">
+              <img src="assets/long lamp.png" alt="">
+            </div>
+            <div class="product-card__body">
+              <span class="product-card__category">Floor Lamp</span>
+              <h2 class="product-card__title">Artistic Vintage Floor Lamp</h2>
+              <p class="product-card__desc"> For the moments when you want your home to feel warm, inviting, and effortlessly beautiful. With its sculptural curved base and soft linen shades, this statement floor lamp adds character and a refined glow to your space — perfect for creating an atmosphere that feels cozy, intentional, and elevated.</p>
+              <ul class="product-card__features">
+                <li class="product-card__feature">Three-light design that creates a warm, inviting ambiance</li>
+                <li class="product-card__feature">Elegant octagonal linen shades for a soft, diffused glow</li>
+                <li class="product-card__feature">Beautiful for evening rituals, reading, journaling, or simply unwinding</li>
+                
+              </ul>
+              <a href="https://amzn.to/4qTEHRV" class="btn btn-amazon" target="_blank" rel="noopener noreferrer">View on Amazon →</a>
+              <p class="product-card__disclaimer">✦ As an Amazon Associate, we may earn a commission from qualifying purchases at no extra cost to you.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- Scents signup CTA -->
+    <section class="signup">
+      <div class="signup__inner">
+        <span class="eyebrow">Free Resource</span>
+        <h2>Not Sure Where to Start?</h2>
+        <p>Download our Mind Saturation Session PDF — a powerful guide to help you have an immersed and focused affirmation session to help you manifest faster!</p>
+        <button class="signup__cta-btn" onclick="openMailerLitePopup()">Get the Free Guide</button>
+        <p class="signup__disclaimer">No spam. Unsubscribe any time.</p>
+      </div>
+    </section>
+  </main>
 
   <!-- FOOTER -->
   <footer class="footer" role="contentinfo">
@@ -598,6 +1014,7 @@
         <div class="footer__social">
           <a href="https://www.pinterest.com/the_soft_abundance_co/" class="footer__social-link" aria-label="Pinterest" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-pinterest"></i></a>
           <a href="https://www.youtube.com/@AwuraamaDadson" class="footer__social-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+           <a href="https://linktr.ee/awuraamadadson" class="footer__social-link" aria-label="Linktree" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-link"></i></a>
         </div>
       </div>
       <div class="footer__col">
@@ -637,7 +1054,7 @@
     }
 
     // PAGE ROUTING
-    var pages = ['home', 'journals', 'affirmations'];
+    var pages = ['home', 'journals', 'affirmations', 'scents', 'decor'];
     function showPage(pageId) {
       pages.forEach(function(p) {
         var el = document.getElementById('page-' + p);
